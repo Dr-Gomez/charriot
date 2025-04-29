@@ -1,0 +1,74 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use File::Spec;
+use File::Basename;
+
+my $arg;
+
+if (@ARGV == 0) {
+    die "Error: No arguments provided. This script needs one argument \n";
+} elsif (@ARGV > 1) {
+    die "Error: No arguments provided. This script needs one argument \n";
+} else {
+    $arg = $ARGV[0];
+}
+
+my $filename = "output.json";
+
+open (my $fh, '>', $filename) or die "Can't open $filename: $!";
+print $fh "";
+close ($fh) or die "Can't close $filename: $!";
+
+open ($fh, '>>', $filename) or die "Can't open $filename: $!";
+print $fh "{ \n";
+
+sub get_files {
+    my ($dir, $indent) = @_;
+
+    opendir(my $dh, $dir) or die "Can't open $dir: $!";
+    my @entries = readdir($dh);
+
+    @entries = grep { $_ ne '.' && $_ ne '..' } @entries;
+
+    my $num_entries = scalar @entries;
+    my $counter = 0;
+
+    foreach my $entry (@entries) {
+        $counter++;
+
+        my $path = File::Spec->catfile($dir, $entry);
+
+        my $indent_string = " " x $indent;
+        my $code_indent_string = $indent_string . "  ";
+
+        my $name = basename($path);
+
+        if (-f $path) {
+            open (my $this_file, "<", $path) or die "Can't open $path: $!";
+
+            my $content = do { local $/; <$this_file> };
+            $content =~ s/([\"'`])/\\$1/g;
+            $content =~ s/\R/\\n/g;
+
+            print $fh "$indent_string\"$name\": \"$content\"";
+            print $fh "," if $counter < $num_entries;
+            print $fh "\n";
+        } elsif (-d $path) {
+            print $fh "$indent_string\"$name\": {\n";
+            get_files($path, $indent + 2);
+            print $fh "$indent_string}";
+            print $fh "," if $counter < $num_entries;
+            print $fh "\n";
+        }
+    }
+
+    closedir($dh);
+}
+
+get_files($arg, 2);
+
+print $fh "}";
+
+close($fh) or die "Can't close $filename: $!";
