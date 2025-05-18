@@ -1,0 +1,27 @@
+#fireworks {
+  border: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background: transparent;
+  z-index: -5;
+}
+
+.trailer {
+  animation: vanish 8s linear forwards;
+}
+
+@keyframes vanish {
+  0% {
+    filter: opacity(1);
+  }
+
+  38% {
+    filter: opacity(1);
+  }
+
+  100% {
+    filter: opacity(0);
+  }
+}

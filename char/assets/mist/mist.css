@@ -1,0 +1,28 @@
+#mist {
+  position: absolute;
+  top: 0;
+  width: 200%;
+  height: 100%;
+  will-change: transform;
+  background: url('mist.svg');
+  opacity: 0.8;
+  animation: fogAnim 120s ease-in-out infinite;
+  z-index: -50;
+}
+
+.fogup {
+  filter: contrast(2);
+}
+
+@keyframes fogAnim {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}

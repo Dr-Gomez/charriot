@@ -1,0 +1,51 @@
+@import url('assets/curtains/curtain.css');
+@import url('assets/grass/grass.css');
+@import url('assets/windmill/windmill.css');
+@import url('assets/hills/hills.css');
+@import url('assets/fireworks/fireworks.css');
+@import url('assets/mist/mist.css');
+@import url('assets/moon/moon.css');
+@import url('assets/shine/shine.css');
+@import url('assets/stars/stars.css');
+
+@import url('assets/bloom/bloom.css');
+
+:root {
+  --opcol: #33333366;
+  --backcol: #000010;
+  --borcol: #0f0f0f;
+  --hovercol: #666666;
+  --textcol: #f7f7f7;
+  --explorer: 256px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, #000038, #000000);
+  overflow: hidden;
+}
+
+#news {
+  height: 32px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #000000;
+}
+
+#content {
+  flex-grow: 1;
+}
+
+/* Visuals */
+
+#overlay {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}

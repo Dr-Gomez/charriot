@@ -1,0 +1,31 @@
+#grass {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+
+  width: 100vw;
+  height: 32px;
+  background: linear-gradient(
+    0deg,
+    #221b19 0px,
+    #221b19 2px,
+    #572a28 2px,
+    #572a28 4px,
+    #aa5a36 4px,
+    #aa5a36 12px,
+    #572a28 12px,
+    #572a28 14px,
+    #221b19 14px,
+    #221b19 16px,
+    #005e30 16px,
+    #005e30 18px,
+    #2bb03b 18px,
+    #2bb03b 26px,
+    #7bd14a 26px,
+    #7bd14a 28px,
+    #221b19 28px,
+    #221b19 30px
+  );
+  image-rendering: pixelated;
+  z-index: -1;
+}

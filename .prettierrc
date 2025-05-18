@@ -9,7 +9,6 @@
   "arrowParens": "always",
   "proseWrap": "always",
   "endOfLine": "lf",
-  "singleQuote": false,
   "htmlWhitespaceSensitivity": "css",
   "quoteProps": "as-needed"
 }
